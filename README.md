@@ -70,6 +70,4 @@ The application intentionally contains the following vulnerabilities:
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/horoqih.git
+Download the apk from the release
