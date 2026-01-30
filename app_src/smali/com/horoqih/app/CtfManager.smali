@@ -1,5 +1,6 @@
 .class public Lcom/horoqih/app/CtfManager;
 .super Ljava/lang/Object;
+.source "CtfManager.java"
 
 .field private static flagCount:I = 0x0
 .field private static points:I = 0x0
@@ -17,7 +18,7 @@
 
 # Static initializer
 .method static constructor <clinit>()V
-    .locals 2
+    .locals 3
     new-instance v0, Ljava/util/HashSet;
     invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
     sput-object v0, Lcom/horoqih/app/CtfManager;->solvedFlags:Ljava/util/HashSet;
@@ -26,8 +27,8 @@
     sput v0, Lcom/horoqih/app/CtfManager;->points:I
     sput v0, Lcom/horoqih/app/CtfManager;->failedAttempts:I
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-    move-result-wide v0
-    sput-wide v0, Lcom/horoqih/app/CtfManager;->startTime:J
+    move-result-wide v1
+    sput-wide v1, Lcom/horoqih/app/CtfManager;->startTime:J
     return-void
 .end method
 
@@ -79,7 +80,7 @@
 .end method
 
 .method public static synchronized addScore(Landroid/content/Context;Ljava/lang/String;)V
-    .locals 6
+    .locals 7
 
     sget-object v0, Lcom/horoqih/app/CtfManager;->solvedFlags:Ljava/util/HashSet;
     invoke-virtual {v0, p1}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
@@ -100,20 +101,20 @@
     sub-long/2addr v0, v2
     const-wide/32 v2, 0xea60
     div-long/2addr v0, v2
-    long-to-int v0, v0
-    shr-int/lit8 v0, v0, 0x1
+    long-to-int v2, v0
+    shr-int/lit8 v2, v2, 0x1
     
-    const/16 v1, 0x64
-    sub-int/2addr v1, v0
+    const/16 v3, 0x64
+    sub-int/2addr v3, v2
     
-    const/16 v0, 0x32
-    if-ge v1, v0, :cond_calc
-    move v1, v0
+    const/16 v4, 0x32
+    if-ge v3, v4, :cond_calc
+    move v3, v4
     :cond_calc
     
-    sget v0, Lcom/horoqih/app/CtfManager;->points:I
-    add-int/2addr v0, v1
-    sput v0, Lcom/horoqih/app/CtfManager;->points:I
+    sget v5, Lcom/horoqih/app/CtfManager;->points:I
+    add-int/2addr v5, v3
+    sput v5, Lcom/horoqih/app/CtfManager;->points:I
 
     new-instance v0, Ljava/lang/StringBuilder;
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -125,10 +126,10 @@
     const-string v2, " (+"
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     move-result-object v0
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
     move-result-object v0
-    const-string v1, " pts)"
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, " pts)"
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     move-result-object v0
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
     move-result-object v0
@@ -139,7 +140,7 @@
 .end method
 
 .method public static synchronized addPassiveScore(Landroid/content/Context;Ljava/lang/String;)V
-    .locals 6
+    .locals 7
 
     sget-object v0, Lcom/horoqih/app/CtfManager;->solvedFlags:Ljava/util/HashSet;
     invoke-virtual {v0, p1}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
@@ -160,22 +161,22 @@
     sub-long/2addr v0, v2
     const-wide/32 v2, 0xea60
     div-long/2addr v0, v2
-    long-to-int v0, v0
-    shr-int/lit8 v0, v0, 0x1
+    long-to-int v2, v0
+    shr-int/lit8 v2, v2, 0x1
     
-    const/16 v1, 0x64
-    sub-int/2addr v1, v0
+    const/16 v3, 0x64
+    sub-int/2addr v3, v2
     
-    const/16 v0, 0x32
-    if-ge v1, v0, :cond_calc
-    move v1, v0
+    const/16 v4, 0x32
+    if-ge v3, v4, :cond_calc
+    move v3, v4
     :cond_calc
     
-    div-int/lit8 v1, v1, 0x2
+    div-int/lit8 v3, v3, 0x2
     
-    sget v0, Lcom/horoqih/app/CtfManager;->points:I
-    add-int/2addr v0, v1
-    sput v0, Lcom/horoqih/app/CtfManager;->points:I
+    sget v5, Lcom/horoqih/app/CtfManager;->points:I
+    add-int/2addr v5, v3
+    sput v5, Lcom/horoqih/app/CtfManager;->points:I
 
     new-instance v0, Ljava/lang/StringBuilder;
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -187,10 +188,10 @@
     const-string v2, " (+"
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     move-result-object v0
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
     move-result-object v0
-    const-string v1, " pts)"
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, " pts)"
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     move-result-object v0
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
     move-result-object v0

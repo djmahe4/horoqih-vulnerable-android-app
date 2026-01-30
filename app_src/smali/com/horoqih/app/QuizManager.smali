@@ -1,5 +1,6 @@
 .class public Lcom/horoqih/app/QuizManager;
 .super Ljava/lang/Object;
+.source "QuizManager.java"
 
 .field private static final PREF_NAME:Ljava/lang/String; = "HoroqihQuizPrefs"
 .field private static final KEY_NEXT_QUIZ_TIME:Ljava/lang/String; = "next_quiz_time"

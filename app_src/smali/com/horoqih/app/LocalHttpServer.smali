@@ -117,7 +117,7 @@
     invoke-interface {p1, v7}, Lfi/iki/elonen/NanoHTTPD$IHTTPSession;->parseBody(Ljava/util/Map;)V
 
     .line 20
-    new-instance p1, Lorg/json/JSONObject;
+    new-instance v10, Lorg/json/JSONObject;
 
     invoke-virtual {v1, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -133,25 +133,25 @@
     move-object v3, v1
 
     :goto_0
-    invoke-direct {p1, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+    invoke-direct {v10, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
     const-string v1, "username"
 
     .line 22
-    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v10, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
     const-string v3, "password"
 
     .line 23
-    invoke-virtual {p1, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v10, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v10
 
     # CTF HOOK: Hardcoded Credentials
     const-string v7, "admin123"
-    invoke-virtual {p1, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v10, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
     move-result v7
     if-eqz v7, :cond_ctf_hardcoded
     const-string v7, "admin"
@@ -180,39 +180,39 @@
 
     move-result-object v1
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v1
 
-    const/16 v1, 0x27
+    const/16 v3, 0x27
 
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v1
 
     .line 25
-    invoke-virtual {v0, p1, v5}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual {v0, v1, v5}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object p1
+    move-result-object v10
 
     .line 30
-    invoke-interface {p1}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v10}, Landroid/database/Cursor;->moveToFirst()Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
     .line 32
-    invoke-interface {p1, v6}, Landroid/database/Cursor;->getInt(I)I
+    invoke-interface {v10, v6}, Landroid/database/Cursor;->getInt(I)I
 
     move-result v0
 
     .line 33
-    invoke-interface {p1, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    invoke-interface {v10, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
@@ -227,51 +227,51 @@
     :cond_ctf_sqli
 
     .line 35
-    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+    invoke-interface {v10}, Landroid/database/Cursor;->close()V
 
     .line 38
-    new-instance p1, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v2, "\n                    {\n                      \"status\":\"success\",\n                      \"userId\":"
+    const-string v3, "\n                    {\n                      \"status\":\"success\",\n                      \"userId\":"
 
-    invoke-direct {p1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, ",\n                      \"role\":\""
+    const-string v2, ",\n                      \"role\":\""
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "\"\n                    }\n                    "
+    const-string v1, "\"\n                    }\n                    "
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 44
-    invoke-static {p1}, Lkotlin/text/StringsKt;->trimIndent(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0}, Lkotlin/text/StringsKt;->trimIndent(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 37
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 30
-    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
 
     goto :goto_1
 
@@ -281,20 +281,20 @@
     iget-object v0, p0, Lcom/horoqih/app/LocalHttpServer;->context:Landroid/content/Context;
     invoke-static {v0}, Lcom/horoqih/app/CtfManager;->incrementFailedLogin(Landroid/content/Context;)V
 
-    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+    invoke-interface {v10}, Landroid/database/Cursor;->close()V
 
-    const-string/jumbo p1, "{ \"status\":\"error\" }"
+    const-string/jumbo v0, "{ \"status\":\"error\" }"
 
     .line 49
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 47
-    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
 
     :goto_1
-    return-object p1
+    return-object v0
 
     .line 53
     :cond_2
@@ -321,33 +321,33 @@
     .line 56
     invoke-interface {p1}, Lfi/iki/elonen/NanoHTTPD$IHTTPSession;->getParameters()Ljava/util/Map;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-interface {p1, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v1, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object p1
+    move-result-object v1
 
-    check-cast p1, Ljava/util/List;
+    check-cast v1, Ljava/util/List;
 
-    if-eqz p1, :cond_3
+    if-eqz v1, :cond_3
 
-    invoke-interface {p1, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v1, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object p1
+    move-result-object v1
 
-    check-cast p1, Ljava/lang/String;
+    check-cast v1, Ljava/lang/String;
 
-    if-eqz p1, :cond_3
+    if-eqz v1, :cond_3
 
-    invoke-static {p1}, Lkotlin/text/StringsKt;->toIntOrNull(Ljava/lang/String;)Ljava/lang/Integer;
+    invoke-static {v1}, Lkotlin/text/StringsKt;->toIntOrNull(Ljava/lang/String;)Ljava/lang/Integer;
 
-    move-result-object p1
+    move-result-object v1
 
-    if-eqz p1, :cond_3
+    if-eqz v1, :cond_3
 
-    invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I
+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
 
-    move-result p1
+    move-result v1
 
     # CTF HOOK: IDOR
     new-instance v7, Lcom/horoqih/app/SessionManager;
@@ -355,51 +355,52 @@
     invoke-direct {v7, v8}, Lcom/horoqih/app/SessionManager;-><init>(Landroid/content/Context;)V
     invoke-virtual {v7}, Lcom/horoqih/app/SessionManager;->getUserId()I
     move-result v7
-    if-eq p1, v7, :cond_ctf_idor
+    if-eq v1, v7, :cond_ctf_idor
     const/4 v8, -0x1
-    if-eq p1, v8, :cond_ctf_idor
+    if-eq v1, v8, :cond_ctf_idor
     iget-object v7, p0, Lcom/horoqih/app/LocalHttpServer;->context:Landroid/content/Context;
     const-string v8, "IDOR (Profile)"
     invoke-static {v7, v8}, Lcom/horoqih/app/CtfManager;->addScore(Landroid/content/Context;Ljava/lang/String;)V
     :cond_ctf_idor
 
+    move v1, v1
     goto :goto_2
 
     :cond_3
-    const/4 p1, -0x1
+    const/4 v1, -0x1
 
     .line 59
     :goto_2
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v3, "SELECT username, role, balance FROM users WHERE id="
+    const-string v4, "SELECT username, role, balance FROM users WHERE id="
 
-    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v3
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v3
 
     .line 58
-    invoke-virtual {v0, v1, v5}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual {v0, v3, v5}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v0
 
     .line 63
     invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v1
+    move-result v3
 
-    if-eqz v1, :cond_4
+    if-eqz v3, :cond_4
 
     .line 65
     invoke-interface {v0, v6}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v3
 
     .line 66
     invoke-interface {v0, v2}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -409,7 +410,7 @@
     .line 67
     invoke-interface {v0, v8}, Landroid/database/Cursor;->getInt(I)I
 
-    move-result v3
+    move-result v4
 
     .line 69
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
@@ -417,66 +418,66 @@
     .line 72
     new-instance v0, Ljava/lang/StringBuilder;
 
-    const-string v4, "\n                    {\n                      \"userId\": "
+    const-string v5, "\n                    {\n                      \"userId\": "
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, ",\n                      \"username\": \""
+    const-string v1, ",\n                      \"username\": \""
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "\",\n                      \"role\": \""
+    const-string v1, "\",\n                      \"role\": \""
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "\",\n                      \"balance\": "
+    const-string v1, "\",\n                      \"balance\": "
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "\n                    }\n                    "
+    const-string v1, "\n                    }\n                    "
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 79
-    invoke-static {p1}, Lkotlin/text/StringsKt;->trimIndent(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0}, Lkotlin/text/StringsKt;->trimIndent(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 71
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 63
-    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
 
     goto :goto_3
 
@@ -484,18 +485,18 @@
     :cond_4
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    const-string/jumbo p1, "{ \"error\":\"user not found\" }"
+    const-string/jumbo v0, "{ \"error\":\"user not found\" }"
 
     .line 84
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 82
-    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
 
     :goto_3
-    return-object p1
+    return-object v0
 
     .line 88
     :cond_5
@@ -536,7 +537,7 @@
     invoke-interface {p1, v2}, Lfi/iki/elonen/NanoHTTPD$IHTTPSession;->parseBody(Ljava/util/Map;)V
 
     .line 93
-    new-instance p1, Lorg/json/JSONObject;
+    new-instance v10, Lorg/json/JSONObject;
 
     invoke-virtual {v1, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -552,31 +553,31 @@
     move-object v3, v1
 
     :goto_4
-    invoke-direct {p1, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+    invoke-direct {v10, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
     .line 95
-    invoke-virtual {p1, v7}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+    invoke-virtual {v10, v7}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
 
     move-result v1
 
     const-string v2, "price"
 
     .line 96
-    invoke-virtual {p1, v2}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+    invoke-virtual {v10, v2}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
 
-    move-result p1
+    move-result v10
 
     # CTF HOOK: Price Manipulation & Negative Amount
     const v7, 0x9c3f # 39999
-    if-ge p1, v7, :cond_ctf_price
+    if-ge v10, v7, :cond_ctf_price
     iget-object v7, p0, Lcom/horoqih/app/LocalHttpServer;->context:Landroid/content/Context;
-    const-string v8, "Price Manipulation"
-    invoke-static {v7, v8}, Lcom/horoqih/app/CtfManager;->addScore(Landroid/content/Context;Ljava/lang/String;)V
+    const-string v11, "Price Manipulation"
+    invoke-static {v7, v11}, Lcom/horoqih/app/CtfManager;->addScore(Landroid/content/Context;Ljava/lang/String;)V
     :cond_ctf_price
-    if-gez p1, :cond_ctf_neg
+    if-gez v10, :cond_ctf_neg
     iget-object v7, p0, Lcom/horoqih/app/LocalHttpServer;->context:Landroid/content/Context;
-    const-string v8, "Negative Amount"
-    invoke-static {v7, v8}, Lcom/horoqih/app/CtfManager;->addScore(Landroid/content/Context;Ljava/lang/String;)V
+    const-string v11, "Negative Amount"
+    invoke-static {v7, v11}, Lcom/horoqih/app/CtfManager;->addScore(Landroid/content/Context;Ljava/lang/String;)V
     :cond_ctf_neg
 
     .line 99
@@ -612,11 +613,11 @@
     .line 105
     invoke-static {v8}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     .line 108
     :cond_7
@@ -627,21 +628,21 @@
     .line 109
     invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
-    if-ge v3, p1, :cond_8
+    if-ge v3, v10, :cond_8
 
-    const-string/jumbo p1, "{ \"status\":\"insufficient_balance\" }"
+    const-string/jumbo v0, "{ \"status\":\"insufficient_balance\" }"
 
     .line 112
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     :cond_8
-    sub-int/2addr v3, p1
+    sub-int/2addr v3, v10
 
     .line 120
     new-instance v2, Ljava/lang/StringBuilder;
@@ -678,43 +679,43 @@
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v10}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, ",\n                  \"remainingBalance\": "
+    const-string v1, ",\n                  \"remainingBalance\": "
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    const-string v0, "\n                }\n                "
+    const-string v1, "\n                }\n                "
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 130
-    invoke-static {p1}, Lkotlin/text/StringsKt;->trimIndent(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0}, Lkotlin/text/StringsKt;->trimIndent(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v0
 
     .line 123
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     .line 134
     :cond_9
@@ -751,7 +752,7 @@
     invoke-interface {p1, v10}, Lfi/iki/elonen/NanoHTTPD$IHTTPSession;->parseBody(Ljava/util/Map;)V
 
     .line 139
-    new-instance p1, Lorg/json/JSONObject;
+    new-instance v10, Lorg/json/JSONObject;
 
     invoke-virtual {v1, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -767,113 +768,113 @@
     move-object v3, v1
 
     :goto_5
-    invoke-direct {p1, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+    invoke-direct {v10, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
     .line 141
-    invoke-virtual {p1, v7}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+    invoke-virtual {v10, v7}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
 
     move-result v1
 
     const-string v3, "oldPassword"
 
     .line 142
-    invoke-virtual {p1, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v10, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
     const-string v4, "newPassword"
 
     .line 143
-    invoke-virtual {p1, v4}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v10, v4}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
 
     const-string v7, "confirmPassword"
 
     .line 144
-    invoke-virtual {p1, v7}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v10, v7}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v7
 
     .line 146
-    invoke-static {v4, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v4, v7}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v7
 
-    if-nez p1, :cond_b
+    if-nez v7, :cond_b
 
-    const-string/jumbo p1, "{ \"status\":\"password_mismatch\" }"
+    const-string/jumbo v0, "{ \"status\":\"password_mismatch\" }"
 
     .line 147
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     .line 153
     :cond_b
-    new-instance p1, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    const-string v7, "SELECT password FROM users WHERE id="
+    const-string v10, "SELECT password FROM users WHERE id="
 
-    invoke-direct {p1, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v7, v10}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v7
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v7
 
     .line 152
-    invoke-virtual {v0, p1, v5}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual {v0, v7, v5}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object p1
+    move-result-object v5
 
     .line 157
-    invoke-interface {p1}, Landroid/database/Cursor;->moveToFirst()Z
+    invoke-interface {v5}, Landroid/database/Cursor;->moveToFirst()Z
 
-    move-result v5
+    move-result v7
 
-    if-nez v5, :cond_c
+    if-nez v7, :cond_c
 
     .line 158
-    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+    invoke-interface {v5}, Landroid/database/Cursor;->close()V
 
     .line 159
     invoke-static {v8}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     .line 162
     :cond_c
-    invoke-interface {p1, v6}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    invoke-interface {v5, v6}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v7
 
     .line 163
-    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+    invoke-interface {v5}, Landroid/database/Cursor;->close()V
 
     .line 165
     invoke-static {v3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
 
-    move-object p1, v3
+    move-object v5, v3
 
-    check-cast p1, Ljava/lang/CharSequence;
+    check-cast v5, Ljava/lang/CharSequence;
 
-    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+    invoke-interface {v5}, Ljava/lang/CharSequence;->length()I
 
-    move-result p1
+    move-result v5
 
-    if-lez p1, :cond_d
+    if-lez v5, :cond_d
 
     goto :goto_6
 
@@ -884,72 +885,72 @@
     if-eqz v2, :cond_e
 
     .line 167
-    invoke-static {v3, v5}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v3, v7}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    move-result p1
+    move-result v2
 
-    if-nez p1, :cond_e
+    if-nez v2, :cond_e
 
-    const-string/jumbo p1, "{ \"status\":\"wrong_password\" }"
+    const-string/jumbo v0, "{ \"status\":\"wrong_password\" }"
 
     .line 168
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     .line 176
     :cond_e
-    new-instance p1, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v2, "UPDATE users SET password=\'"
+    const-string v3, "UPDATE users SET password=\'"
 
-    invoke-direct {p1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {p1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v2
 
-    const-string v2, "\' WHERE id="
+    const-string v3, "\' WHERE id="
 
-    invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v2
 
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v1
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object p1
+    move-result-object v1
 
     .line 175
-    invoke-virtual {v0, p1}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
 
-    const-string/jumbo p1, "{ \"status\":\"success\" }"
+    const-string/jumbo v0, "{ \"status\":\"success\" }"
 
     .line 179
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 
     :cond_f
-    const-string p1, "404"
+    const-string v0, "404"
 
     .line 184
-    invoke-static {p1}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
+    invoke-static {v0}, Lfi/iki/elonen/NanoHTTPD;->newFixedLengthResponse(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$Response;
 
-    move-result-object p1
+    move-result-object v0
 
-    invoke-static {p1, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v9}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
 
-    return-object p1
+    return-object v0
 .end method

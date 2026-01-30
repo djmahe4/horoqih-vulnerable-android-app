@@ -66,9 +66,10 @@
 
 # virtual methods
 .method public onCreate()V
-    .locals 3
+    .locals 4
 
     .line 12
+    :try_start_0
     invoke-super {p0}, Landroid/app/Application;->onCreate()V
 
     .line 14
@@ -84,12 +85,20 @@
 
     invoke-virtual {v0, v1}, Lcom/horoqih/app/MyApp$Companion;->setServer(Lcom/horoqih/app/LocalHttpServer;)V
 
-    .line 15
     invoke-virtual {v0}, Lcom/horoqih/app/MyApp$Companion;->getServer()Lcom/horoqih/app/LocalHttpServer;
 
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/horoqih/app/LocalHttpServer;->start()V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
+    return-void
+
+    :catch_0
+    move-exception v0
+    const-string v1, "CTF_CRASH"
+    const-string v2, "CRASH IN APP STARTUP"
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     return-void
 .end method
