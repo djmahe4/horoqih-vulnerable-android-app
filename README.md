@@ -39,8 +39,8 @@ The application follows realistic workflows such as authentication, product purc
 
 <p align="center">
   <img src="images/dashboard.jpg" width="250">
-  <img src="images/splash.jpg" width="250">
   <img src="images/login.jpg" width="250">
+  <img src="images/splash.jpg" width="250">
   
 </p>
 
