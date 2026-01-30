@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo.png" width="180">
+  <img src="images/logo.jpg" width="180">
 </p>
 
 <h1 align="center">Horoqih</h1>
@@ -38,9 +38,9 @@ The application follows realistic workflows such as authentication, product purc
 ## Application Screenshots
 
 <p align="center">
-  <img src="images/splash.png" width="250">
-  <img src="images/login.png" width="250">
-  <img src="images/dashboard.png" width="250">
+  <img src="images/splash.jpg" width="250">
+  <img src="images/login.jpg" width="250">
+  <img src="images/dashboard.jpg" width="250">
 </p>
 
 ---
