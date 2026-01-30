@@ -70,4 +70,4 @@ The application intentionally contains the following vulnerabilities:
 
 ## Installation
 
-Download the apk from the release
+Download the apk from the releases
