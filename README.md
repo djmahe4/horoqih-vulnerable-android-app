@@ -12,7 +12,7 @@
 
 ## Developer
 
-Farish 
+Farish |
 Security Researcher
 
 ## Overview
