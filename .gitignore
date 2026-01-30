@@ -1,0 +1,28 @@
+# Existing ignores
+horoqih.apk
+*.log
+*.tmp
+
+# --- APK Tool & Build Artifacts ---
+# The folder created during 'apktool b'
+app_src/build/
+app_src/dist/
+
+# --- Binaries ---
+# Ignore generated APKs (Upload these to GitHub Releases instead)
+*.apk
+*.ap_
+*.dex
+
+# --- Security ---
+# NEVER commit signing keys
+*.keystore
+*.jks
+*.p12
+*.pem
+
+# --- OS & IDE Junk ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
