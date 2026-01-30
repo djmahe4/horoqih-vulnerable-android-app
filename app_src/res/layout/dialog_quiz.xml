@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="#ff1a1c1f"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@id/quizTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🕵️ Hacker Quiz"
+            android:textColor="@color/yellow"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@id/quizQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loading..."
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:layout_marginBottom="20dp"/>
+
+        <RadioGroup
+            android:id="@id/quizOptionsGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@id/quizOption1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option 1"
+                android:textColor="#dddddd"
+                android:padding="8dp"
+                android:buttonTint="@color/yellow"/>
+            
+            <RadioButton
+                android:id="@id/quizOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option 2"
+                android:textColor="#dddddd"
+                android:padding="8dp"
+                android:buttonTint="@color/yellow"/>
+
+            <RadioButton
+                android:id="@id/quizOption3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option 3"
+                android:textColor="#dddddd"
+                android:padding="8dp"
+                android:buttonTint="@color/yellow"/>
+
+            <RadioButton
+                android:id="@id/quizOption4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option 4"
+                android:textColor="#dddddd"
+                android:padding="8dp"
+                android:buttonTint="@color/yellow"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@id/quizSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Answer"
+            android:backgroundTint="@color/yellow"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@id/quizClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close (Timer Continues)"
+            android:backgroundTint="#ff444444"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
